@@ -7,7 +7,7 @@ EmailID: pathy037@mymail.unisa.edu.au
 This is my own work as defined by the University's Academic Misconduct Policy.
 '''
 
-rom abc import ABC, abstractmethod
+from abc import ABC, abstractmethod
 
 class Alchemist:
     def _init_(self, attack, strength, defense, magic, ranged, necromancy):
