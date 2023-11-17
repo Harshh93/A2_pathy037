@@ -25,7 +25,7 @@ class TestPotionMixing(unittest.TestCase):
 
         # Mix a valid potion
         self.alchemist.mixPotion("Super Attack")
-        potions = self.laboratory._Laboratory__potions
+        potions = self.alchemist.getLaboratory().getPotions()
 
         self.assertEqual(len(potions), 1)
         self.assertIsInstance(potions[0], SuperPotion)
@@ -41,7 +41,7 @@ class TestPotionMixing(unittest.TestCase):
 
         # Mix an invalid potion (missing ingredients)
         self.alchemist.mixPotion("Invalid Potion")
-        potions = self.laboratory._Laboratory__potions
+        potions = self.alchemist.getLaboratory().getPotions()
 
         self.assertEqual(len(potions), 0)
 
@@ -58,11 +58,11 @@ class TestPotionMixing(unittest.TestCase):
         self.alchemist.mixPotion("Super Attack")
 
         # Drink the potion
-        super_attack_potion = self.laboratory._Laboratory__potions[0]
+        super_attack_potion = self.alchemist.getLaboratory().getPotions()[0]
         result = self.alchemist.drinkPotion(super_attack_potion)
 
         self.assertEqual(result, "Attack")
-        self.assertEqual(self.alchemist._Alchemist__attack, super_attack_potion.getBoost())
+        self.assertEqual(self.alchemist.getAttack(), super_attack_potion.getBoost())
 
     def test_refine_reagents(self):
         # Create herb and catalyst instances
@@ -80,6 +80,7 @@ class TestPotionMixing(unittest.TestCase):
         self.assertFalse(arbuck.getGrimy())
         self.assertEqual(arbuck.getPotency(), 2.6 * 2.5)
 
-        self.assertEqual(eye_of_newt.getQuality(), 2.1)  
+        self.assertEqual(eye_of_newt.getQuality(), 2.1)
+
 if __name__ == '__main__':
     unittest.main()
