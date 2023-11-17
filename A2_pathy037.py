@@ -271,22 +271,3 @@ class Catalyst(Reagent):
     def getQuality(self):
         return self.__quality
 
-# Herb and Catalyst instances with potency and quality values
-arbuck = Herb("Arbuck", 2.6)
-eye_of_newt = Catalyst("Eye of Newt", 4.3, 1.0)
-
-# Create an instance of Alchemist
-alchemist = Alchemist()
-
-# Collect reagents in the laboratory
-alchemist.collectReagent(arbuck, 5)
-alchemist.collectReagent(eye_of_newt, 3)
-
-# Mix a potion using the alchemist's recipes
-super_attack_potion = SuperPotion("Super Attack", "Attack", 0.0, arbuck, eye_of_newt)
-alchemist.mixPotion("Super Attack")
-result_super = alchemist.drinkPotion(super_attack_potion)
-print(result_super)
-
-# Refine reagents in the laboratory
-alchemist.refineReagents()

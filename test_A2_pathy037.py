@@ -12,8 +12,7 @@ from A2_pathy037 import Laboratory, Alchemist, Herb, Catalyst, SuperPotion, Extr
 class TestPotionMixing(unittest.TestCase):
     def setUp(self):
         self.laboratory = Laboratory()
-        self.alchemist = Alchemist()
-
+        self.alchemist = Alchemist(
     def test_mix_valid_potion(self):
         # Create herb and catalyst instances
         arbuck = Herb("Arbuck", 2.6)
