@@ -11,7 +11,10 @@ import math
 from abc import ABC, abstractmethod
 
 class Laboratory:
+    """Represents a laboratory for potion mixing."""
+
     def __init__(self):
+        """Initializing the Laboratory with potions, herbs, and catalysts."""
         self.__potions = []
         self.__herbs = []
         self.__catalysts = []
@@ -51,7 +54,10 @@ class Laboratory:
             self.__catalysts.extend([reagent] * amount)
 
 class Alchemist:
+    """Represents an alchemist who mixes potions and refines reagents."""
+
     def __init__(self):
+        """Initialize the Alchemist with various attributes."""
         self.__attack = 0
         self.__strength = 0
         self.__defence = 0
@@ -122,28 +128,42 @@ class Alchemist:
             catalyst.refine()
 
 class Potion(ABC):
+    """Abstract base class representing a potion."""
+
     def __init__(self, name, stat, boost):
+        """Initialize the Potion with name, stat, and boost."""
         self.__name = name
         self.__stat = stat
         self.__boost = boost
 
     @abstractmethod
     def calculateBoost(self):
+        """Abstract method to calculate the boost value of the potion."""
         pass
 
     def getName(self):
+        
         return self.__name
 
     def getStat(self):
+        
         return self.__stat
 
     def getBoost(self):
+        
         return self.__boost
 
     def setBoost(self, newBoost):
         self.__boost = newBoost
 
 class SuperPotion(Potion):
+    """
+    Represents a super potion.
+
+    Attributes:
+    __herb (Herb): Herb used in the super potion.
+    __catalyst (Catalyst): Catalyst used in the super potion.
+    """
     def __init__(self, name, stat, boost, herb, catalyst):
         super().__init__(name, stat, boost)
         self.__herb = herb
@@ -159,6 +179,13 @@ class SuperPotion(Potion):
         return self.__catalyst
 
 class ExtremePotion(Potion):
+    """
+    Represents an extreme potion.
+
+    Attributes:
+    __reagent (Reagent): Reagent used in the extreme potion.
+    __potion (Potion): Potion used as a base for the extreme potion.
+    """
     def __init__(self, name, stat, boost, reagent, potion):
         super().__init__(name, stat, boost)
         self.__reagent = reagent
@@ -174,6 +201,13 @@ class ExtremePotion(Potion):
         return self.__potion
 
 class Reagent(ABC):
+    """
+    Abstract base class representing a reagent.
+
+    Attributes:
+    __name : Name of the reagent.
+    __potency : Potency value of the reagent.
+    """
     def __init__(self, name, potency):
         self.__name = name
         self.__potency = potency
@@ -192,6 +226,12 @@ class Reagent(ABC):
         self.__potency = newPotency
 
 class Herb(Reagent):
+    """
+    Represents a herb reagent.
+
+    Attributes:
+    __grimy (bool): Indicator if the herb is grimy or not.
+    """
     def __init__(self, name, potency):
         super().__init__(name, potency)
         self.__potency = potency  
@@ -210,6 +250,12 @@ class Herb(Reagent):
         self.__grimy = False
 
 class Catalyst(Reagent):
+    """
+    Represents a catalyst reagent.
+
+    Attributes:
+    __quality (float): Quality value of the catalyst.
+    """
     def __init__(self, name, potency, quality):
         super().__init__(name, potency)
         self.__quality = quality
