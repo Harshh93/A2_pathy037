@@ -16,10 +16,10 @@ class Laboratory:
         self.__catalysts = []
 
     def mix_potion(self, name, type, stat,  primaryingredient, secondaryingredient):
-        if primaryingredient in self.__herbs  and (secondaryingredient in self.__catalysts or secondaryingredient in self.__potions):
+        if (primaryingredient in self.__herbs or primaryingredient in self.__catalysts)  and (secondaryingredient in self.__catalysts or secondaryingredient in self.__potions):
             # Mix potion based on the recipe
             if secondaryingredient in self.__potions:
-                # Create an extreme potion
+                # Create an super potion
                 super_potion = next(p for p in self.__potions if p.name == secondaryingredient)
                 if type == "Super":
                     # Super potion formula: potency of its herb + (potency of its catalyst * quality of its catalyst) * 1.5
