@@ -12,7 +12,7 @@ from A2_pathy037 import Laboratory, Alchemist, Herb, Catalyst, SuperPotion, Extr
 class TestPotionMixing(unittest.TestCase):
     def setUp(self):
         self.laboratory = Laboratory()
-        self.alchemist = Alchemist(
+        self.alchemist = Alchemist()
     def test_mix_valid_potion(self):
         # Create herb and catalyst instances
         arbuck = Herb("Arbuck", 2.6)
@@ -64,22 +64,17 @@ class TestPotionMixing(unittest.TestCase):
         self.assertEqual(self.alchemist.getAttack(), super_attack_potion.getBoost())
 
     def test_refine_reagents(self):
-        # Create herb and catalyst instances
         arbuck = Herb("Arbuck", 2.6)
         eye_of_newt = Catalyst("Eye of Newt", 4.3, 1.0)
 
-        # Collect reagents in the laboratory
         self.alchemist.collectReagent(arbuck, 5)
         self.alchemist.collectReagent(eye_of_newt, 3)
 
-        # Refine reagents
         self.alchemist.refineReagents()
 
-        # Check if reagents are refined
         self.assertFalse(arbuck.getGrimy())
         self.assertEqual(arbuck.getPotency(), 2.6 * 2.5)
 
         self.assertEqual(eye_of_newt.getQuality(), 2.1)
 
-if __name__ == '__main__':
-    unittest.main()
+unittest.main()

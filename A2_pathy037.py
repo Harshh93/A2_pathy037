@@ -1,5 +1,5 @@
 '''
-File: A2_pathy037.py
+File: A2_pathy037.py 
 Description: This file has the main code of the assignment.
 Author: Harsh Manishkumar Patel
 StudentID: 110403785
@@ -109,7 +109,7 @@ class Alchemist:
             self.__strength += potion.getBoost()
         elif potion.getStat() == "defence":
             self.__defence += potion.getBoost()
-        elif potion.getStat() == "magic":
+        elif potion.getStat() == "magic": 
             self.__magic += potion.getBoost()
         elif potion.getStat() == "range":
             self.__range += potion.getBoost()
